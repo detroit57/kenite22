@@ -1,0 +1,417 @@
+:root {
+  --purple: #790080;
+  --deep-purple: #4b0754;
+  --gold: #d5b333;
+  --cream: #fbf8f1;
+  --white: #ffffff;
+  --text: #29232d;
+  --muted: #746d78;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 7%;
+  background: var(--white);
+  border-bottom: 1px solid #eee5ef;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  background: var(--purple);
+  color: var(--gold);
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.brand h1 {
+  margin: 0 0 5px;
+  color: var(--purple);
+  font-size: 23px;
+}
+
+.brand p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.system-label {
+  color: var(--purple);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.welcome {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 85px 25px 65px;
+}
+
+.welcome-content {
+  max-width: 700px;
+}
+
+.eyebrow {
+  color: var(--purple);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.welcome h2 {
+  margin: 20px 0;
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.welcome h2 span {
+  color: var(--purple);
+}
+
+.welcome-content>p {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 520px;
+}
+
+button {
+  margin-top: 18px;
+  padding: 15px 24px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--purple);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+button:hover {
+  background: var(--deep-purple);
+  transform: translateY(-2px);
+}
+
+.message {
+  color: var(--purple) !important;
+  font-weight: bold;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 65px;
+}
+
+.feature-card {
+  padding: 27px;
+  background: var(--white);
+  border: 1px solid #eee5ef;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px #3d164008;
+}
+
+.feature-card>span {
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.feature-card h3 {
+  color: var(--purple);
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+footer {
+  padding: 25px;
+  background: var(--white);
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+  border-top: 1px solid #eee5ef;
+}
+
+@media (max-width: 650px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .welcome {
+    padding-top: 55px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome h2 {
+    letter-spacing: -1px;
+  }
+}
+
+
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.page-heading h2 {
+  margin: 15px 0;
+  font-size: clamp(34px, 5vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.page-heading h2 span {
+  color: var(--purple);
+}
+
+.page-heading p,
+.section-heading p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.summary-card,
+.inventory-panel {
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid #eee5ef;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px #3d164008;
+}
+
+.summary-card span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.summary-card h3 {
+  margin: 13px 0 0;
+  color: var(--purple);
+  font-size: 32px;
+}
+
+.inventory-panel {
+  padding: 24px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.section-heading h3 {
+  margin: 0;
+  color: var(--purple);
+  font-size: 21px;
+}
+
+.section-heading p {
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
+#productSearch {
+  width: min(100%, 280px);
+  padding: 12px 14px;
+  border: 1px solid #ded5e0;
+  border-radius: 8px;
+  font-size: 14px;
+  outline-color: var(--purple);
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th,
+td {
+  padding: 15px 12px;
+  border-bottom: 1px solid #eee8ef;
+  font-size: 13px;
+}
+
+th {
+  background: #faf6fb;
+  color: var(--purple);
+  font-weight: 700;
+}
+
+td {
+  color: var(--text);
+}
+
+.stock-badge {
+  display: inline-block;
+  padding: 6px 9px;
+  border-radius: 20px;
+  background: #e8f7ed;
+  color: #247340;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.stock-badge.low {
+  background: #fff0d8;
+  color: #9b5a00;
+}
+
+.stock-badge.out {
+  background: #fde8e8;
+  color: #b42318;
+}
+
+@media (max-width: 650px) {
+
+  .page-heading,
+  .section-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #productSearch {
+    width: 100%;
+  }
+
+  .inventory-panel,
+  .summary-card {
+    padding: 16px;
+  }
+}
+
+
+
+
+.receiving-panel,
+#movementSection {
+  margin-top: 28px;
+}
+
+.receiving-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.receiving-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.receiving-form input,
+.receiving-form select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #ded5e0;
+  border-radius: 8px;
+  background: white;
+  font: inherit;
+  font-weight: normal;
+  outline-color: var(--purple);
+}
+
+.receiving-form button {
+  justify-self: start;
+  margin-top: 0;
+}
+
+.receiving-form .message {
+  align-self: center;
+  margin: 0;
+}
+
+@media (max-width: 650px) {
+  .receiving-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* Step 7: Expense Management */
+.expenses-panel {
+  margin-top: 28px;
+}
+
+#expenseTotal,
+#expenseCount {
+  overflow-wrap: anywhere;
+}
+
+#expenseTableBody td {
+  vertical-align: middle;
+}
+
+@media (max-width: 650px) {
+  .expenses-panel .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

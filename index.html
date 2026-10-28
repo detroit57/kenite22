@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Praim Foods Management System">
+  <title>Praim Foods | Management System</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+      <div>
+        <h1>Praim Foods</h1>
+        <p>Pure Nature. Authentic flavor.</p>
+      </div>
+    </div>
+    <span class="system-label">MANAGEMENT SYSTEM</span>
+  </header>
+
+
+  <main class="welcome">
+    <div class="page-heading">
+      <div>
+        <span class="eyebrow">PRAIM FOODS MANAGEMENT</span>
+        <h2>Product <span>Inventory</span></h2>
+        <p>Manage your products, stock quantities and prices.</p>
+      </div>
+      <button id="showInventoryButton">View Inventory</button>
+    </div>
+
+    <section class="summary-grid">
+      <article class="summary-card">
+        <span>Total Products</span>
+        <h3 id="totalProducts">14</h3>
+      </article>
+      <article class="summary-card">
+        <span>Low Stock Items</span>
+        <h3 id="lowStockCount">0</h3>
+      </article>
+      <article class="summary-card">
+        <span>Product Categories</span>
+        <h3 id="categoryCount">4</h3>
+      </article>
+    </section>
+
+    <section class="inventory-panel" id="inventorySection">
+      <div class="section-heading">
+        <div>
+          <h3>All Products</h3>
+          <p>Your Praim Foods product list</p>
+        </div>
+        <input type="search" id="productSearch" placeholder="Search products..." aria-label="Search products">
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Unit</th>
+              <th>Stock</th>
+              <th>Buying Price (₦)</th>
+              <th>Selling Price (₦)</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryTableBody"></tbody>
+        </table>
+      </div>
+
+      <p id="inventoryMessage" class="message" aria-live="polite"></p>
+    </section>
+     
+    
+<section class="inventory-panel receiving-panel" id="receivingSection">
+  <div class="section-heading">
+    <div>
+      <h3>Receive New Stock</h3>
+      <p>Record products delivered by your suppliers.</p>
+    </div>
+  </div>
+
+  <form id="receivingForm" class="receiving-form">
+    <label>
+      Product
+      <select id="receiveProduct" required></select>
+    </label>
+
+    <label>
+      Supplier name
+      <input id="receiveSupplier" type="text" placeholder="Enter supplier name" required>
+    </label>
+
+    <label>
+      Quantity received
+      <input id="receiveQuantity" type="number" min="0.001" step="any" placeholder="e.g. 30" required>
+    </label>
+
+    <label>
+      Unit cost (₦)
+      <input id="receiveCost" type="number" min="0" step="any" placeholder="Cost per selected unit" required>
+    </label>
+
+    <label>
+      Delivery reference
+      <input id="receiveReference" type="text" placeholder="e.g. PF-DEL-001">
+    </label>
+
+    <label>
+      Delivery date
+      <input id="receiveDate" type="date" required>
+    </label>
+
+    <button type="submit">Record Delivery</button>
+    <p id="receivingMessage" class="message" aria-live="polite"></p>
+  </form>
+</section>
+
+<section class="inventory-panel" id="movementSection">
+
+  <div class="section-heading">
+    <div>
+      <h3>Stock Movement History</h3>
+      <p>Review deliveries recorded in this browser.</p>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Product</th>
+          <th>Movement</th>
+          <th>Quantity</th>
+          <th>Supplier</th>
+          <th>Unit Cost</th>
+          <th>Reference</th>
+        </tr>
+      </thead>
+      <tbody id="movementTableBody"></tbody>
+    </table>
+  </div>
+  <p id="movementMessage" class="message" aria-live="polite"></p>
+</section>
+
+
+
+<section class="inventory-panel sales-panel" id="salesSection">
+  <div class="section-heading">
+    <div>
+      <h3>Record a Sale</h3>
+      <p>Record retail and wholesale customer purchases.</p>
+    </div>
+  </div>
+
+  <form id="salesForm" class="receiving-form">
+    <label>
+      Sale type
+      <select id="saleType" required>
+        <option value="Retail">Retail</option>
+        <option value="Wholesale">Wholesale</option>
+      </select>
+    </label>
+
+    <label>
+      Customer name
+      <input id="saleCustomer" type="text" placeholder="Customer name" required>
+    </label>
+
+    <label>
+      Product
+      <select id="saleProduct" required></select>
+    </label>
+
+    <label>
+      Quantity sold
+      <input id="saleQuantity" type="number" min="0.001" step="any" required placeholder="e.g. 2">
+    </label>
+
+    <label>
+      Selling price per unit (₦)
+      <input id="salePrice" type="number" min="0" step="any" required>
+    </label>
+
+    <label>
+      Payment method
+      <select id="salePayment" required>
+        <option value="Cash">Cash</option>
+        <option value="Transfer">Bank Transfer</option>
+        <option value="POS">POS</option>
+      </select>
+    </label>
+
+    <label>
+      Sale date
+      <input id="saleDate" type="date" required>
+    </label>
+
+    <button type="submit">Complete Sale</button>
+    <p id="salesMessage" class="message" aria-live="polite"></p>
+  </form>
+
+  <div class="section-heading" style="margin-top: 35px;">
+    <div>
+      <h3>Sales History</h3>
+      <p>Sales recorded in this browser.</p>
+    </div>
+  </div>
+
+  <div class="summary-grid">
+    <article class="summary-card">
+      <span>Total Sales</span>
+      <h3 id="salesCount">0</h3>
+    </article>
+    <article class="summary-card">
+      <span>Total Revenue</span>
+      <h3 id="salesRevenue">₦0</h3>
+    </article>
+    <article class="summary-card">
+      <span>Gross Profit</span>
+      <h3 id="salesGrossProfit">₦0</h3>
+    </article>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Receipt</th>
+          <th>Date</th>
+          <th>Customer</th>
+          <th>Type</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Payment</th>
+        </tr>
+      </thead>
+      <tbody id="salesTableBody"></tbody>
+    </table>
+  </div>
+</section>
+    
+
+
+
+
+
+
+
+<section class="inventory-panel expenses-panel" id="expensesSection">
+  <div class="section-heading">
+    <div>
+      <h3>Expense Management</h3>
+      <p>Record and monitor Praim Foods business expenses.</p>
+    </div>
+  </div>
+
+  <form id="expenseForm" class="receiving-form">
+    <label>
+      Expense category
+      <select id="expenseCategory" required>
+        <option value="Transportation">Transportation</option>
+        <option value="Delivery">Delivery</option>
+        <option value="Packaging">Packaging</option>
+        <option value="Electricity">Electricity</option>
+        <option value="Rent">Rent</option>
+        <option value="Staff Salary">Staff Salary</option>
+        <option value="Repairs and Maintenance">Repairs and Maintenance</option>
+        <option value="Other">Other</option>
+      </select>
+    </label>
+
+    <label>
+      Expense description
+      <input id="expenseDescription" type="text"
+        placeholder="e.g. Transporting goods to the shop" required>
+    </label>
+
+    <label>
+      Amount (₦)
+      <input id="expenseAmount" type="number"
+        min="0.01" step="any" placeholder="e.g. 5000" required>
+    </label>
+
+    <label>
+      Payment method
+      <select id="expensePayment" required>
+        <option value="Cash">Cash</option>
+        <option value="Transfer">Bank Transfer</option>
+        <option value="POS">POS</option>
+      </select>
+    </label>
+
+    <label>
+      Expense date
+      <input id="expenseDate" type="date" required>
+    </label>
+
+    <label>
+      Recorded by
+      <input id="expenseRecordedBy" type="text"
+        placeholder="Staff or director name" required>
+    </label>
+
+    <label>
+      Receipt/reference (optional)
+      <input id="expenseReference" type="text"
+        placeholder="Receipt number or payment reference">
+    </label>
+
+    <button type="submit">Record Expense</button>
+    <p id="expenseMessage" class="message" aria-live="polite"></p>
+  </form>
+
+  <div class="summary-grid">
+    <article class="summary-card">
+      <span>Total Expenses</span>
+      <h3 id="expenseTotal">₦0</h3>
+    </article>
+
+    <article class="summary-card">
+      <span>Number of Records</span>
+      <h3 id="expenseCount">0</h3>
+    </article>
+  </div>
+
+  <div class="section-heading" style="margin-top: 30px;">
+    <div>
+      <h3>Expense History</h3>
+      <p>All expenses recorded in this browser.</p>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Payment</th>
+          <th>Recorded By</th>
+          <th>Reference</th>
+        </tr>
+      </thead>
+      <tbody id="expenseTableBody"></tbody>
+    </table>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </main>
+
+
+  <footer>
+    <p>Praim Foods · <span id="currentYear"></span></p>
+    <p>praimfoods@gmail.com · 09068042720</p>
+    <p>Social media: @praimfoods</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
